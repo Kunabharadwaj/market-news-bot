@@ -34,7 +34,7 @@ Summarise the key themes in 8-10 bullet points. Flag anything relevant to:
 - Indian stock market (NSE/BSE)
 - Global market sentiment
 - Macro/economic signals
-- Sectors: Banking, IT, Energy, Auto
+- Sectors: Every Sector
 
 Headlines:
 {bullet_list}
@@ -42,7 +42,7 @@ Headlines:
 Format: Use emoji bullet points. End with a 2-line "💡 Investor Takeaway" section."""
 
     response = client.chat.completions.create(
-        model="llama3-8b-8192",
+        model="llama-3.1-8b-instant",
         messages=[{"role": "user", "content": prompt}],
         max_tokens=800,
     )
