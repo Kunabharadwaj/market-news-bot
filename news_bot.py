@@ -48,15 +48,26 @@ Format: Use emoji bullet points. End with a 2-line "💡 Investor Takeaway" sect
     )
     return response.choices[0].message.content
 
+# def send_telegram(message: str):
+#     date_str = datetime.now().strftime("%d %b %Y, %I:%M %p IST")
+#     full_msg = f"📰 *Market News Digest — {date_str}*\n\n{message}"
+#     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+#     requests.post(url, json={
+#         "chat_id": CHAT_ID,
+#         "text": full_msg,
+#         "parse_mode": "Markdown"
+#     })
+
 def send_telegram(message: str):
     date_str = datetime.now().strftime("%d %b %Y, %I:%M %p IST")
     full_msg = f"📰 *Market News Digest — {date_str}*\n\n{message}"
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    requests.post(url, json={
+    response = requests.post(url, json={
         "chat_id": CHAT_ID,
         "text": full_msg,
         "parse_mode": "Markdown"
     })
+    print(f"Telegram response: {response.status_code} - {response.text}")
 
 if __name__ == "__main__":
     print("Fetching headlines...")
